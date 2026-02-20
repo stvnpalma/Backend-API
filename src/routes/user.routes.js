@@ -1,12 +1,12 @@
 import express from "express";
-import { users } from "../data/user.store.js";
-import { findOrCreateUser } from "../services/user.service.js";
+import { findOrCreateUser, getAllUsers } from "../services/user.service.js";
 
 const router = express.Router();
 
-// GET /user
-router.get("/user", (req, res) => {
-  res.json(users[0]);
+// GET /users
+router.get("/users", (req, res) => {
+  const allUsers = getAllUsers();
+  res.status(200).json(allUsers);
 });
 
 // POST /user/login
@@ -20,7 +20,7 @@ router.post("/user/login", (req, res) => {
   const user = findOrCreateUser(username);
   user.loginCount += 1;
 
-  res.json(user);
+  res.status(200).json(user);
 });
 
 export default router;
