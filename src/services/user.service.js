@@ -1,5 +1,9 @@
 import { users } from "../data/user.store.js";
 
+export function getAllUsers() {
+  return users;
+}
+
 export const findOrCreateUser = (username) => {
   let user = users.find((u) => u.username === username);
 
