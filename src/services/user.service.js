@@ -14,3 +14,7 @@ export const findOrCreateUser = (username) => {
 
   return user;
 };
+
+export function getUserByUsername(username) {
+  return users.find((u) => u.username === username);
+}
