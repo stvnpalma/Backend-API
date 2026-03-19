@@ -35,7 +35,6 @@ router.post("/user/login", (req, res) => {
   }
 
   const user = findOrCreateUser(username);
-  user.loginCount += 1;
 
   res.status(200).json(user);
 });

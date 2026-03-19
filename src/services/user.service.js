@@ -11,7 +11,7 @@ export const findOrCreateUser = (username) => {
     user = { username, loginCount: 0 };
     users.push(user);
   }
-
+  user.loginCount += 1;
   return user;
 };
 
