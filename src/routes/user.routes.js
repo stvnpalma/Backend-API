@@ -1,5 +1,9 @@
 import express from "express";
-import { findOrCreateUser, getAllUsers } from "../services/user.service.js";
+import {
+  findOrCreateUser,
+  getAllUsers,
+  getUserByUsername,
+} from "../services/user.service.js";
 
 const router = express.Router();
 
@@ -7,6 +11,19 @@ const router = express.Router();
 router.get("/users", (req, res) => {
   const allUsers = getAllUsers();
   res.status(200).json(allUsers);
+});
+
+// GET /users/:username
+router.get("/users/:username", (req, res) => {
+  const { username } = req.params;
+
+  const user = getUserByUsername(username);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  res.status(200).json(user);
 });
 
 // POST /user/login
