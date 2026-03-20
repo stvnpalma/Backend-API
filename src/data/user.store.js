@@ -1,6 +1,7 @@
-export const users = [
-  {
-    username: "Steven",
-    loginCount: 5,
-  },
-];
+let users = [];
+
+export const getUsers = () => users;
+
+export const resetUsers = () => {
+  users = [];
+};

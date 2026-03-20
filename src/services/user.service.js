@@ -1,4 +1,6 @@
-import { users } from "../data/user.store.js";
+import { getUsers } from "../data/user.store.js";
+
+const users = getUsers();
 
 export function getAllUsers() {
   return users;
@@ -6,7 +8,6 @@ export function getAllUsers() {
 
 export const findOrCreateUser = (username) => {
   let user = users.find((u) => u.username === username);
-
   if (!user) {
     user = { username, loginCount: 0 };
     users.push(user);
